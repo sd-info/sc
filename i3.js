@@ -1,4 +1,4 @@
-export async function vK(s) {
+export async function v9(s) {
     return new Promise((r) => {
         const i = new Image();
         i.onload = () => r(true);
