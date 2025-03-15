@@ -1,5 +1,5 @@
-import { pM } from './m5.js';
+import { x0 } from './m5.js';
 
-document.getElementById('nI').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') pM();
+document.getElementById('vIn').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') x0();
 });
