@@ -18,4 +18,4 @@ export function k5(u, f) {
 export function n6(m) {
     document.getElementById('eRr').textContent = m;
 }
-window.k5 = k5;
+window.k5 = k5; 
