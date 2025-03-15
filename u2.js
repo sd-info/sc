@@ -1,7 +1,9 @@
-export function bF(t) { return `https://img.p1.q2/vi/${t}/`; }
+export function b7(t) {
+    return `https://img.youtube.com/vi/${t}/`;
+}
 
-export function xT(u) {
-    const p = /^(?:https?:\/\/)?(?:www\.)?(?:p1\.q2\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|q3\.be\/|p1\.q2\/s4\/)([a-zA-Z0-9_-]{11})/;
-    const m = u.match(p);
+export function p8(u) {
+    const r = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/;
+    const m = u.match(r);
     return m && m[1] ? m[1] : null;
 }
