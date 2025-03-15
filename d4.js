@@ -1,6 +1,7 @@
-export function gH(u, f) {
-    fetch(u).then(r => {
-        if (!r.ok) throw new Error('E1');
+export function k5(u, f) {
+    let x = fetch(u);
+    x.then(r => {
+        if (!r.ok) throw new Error('X');
         return r.blob();
     }).then(b => {
         const l = window.URL.createObjectURL(b);
@@ -11,9 +12,9 @@ export function gH(u, f) {
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(l);
-    }).catch(e => kP(`Err: ${e.message}`));
+    }).catch(e => n6(`Oops: ${e.message}`));
 }
 
-export function kP(m) { 
-    document.getElementById('oR').textContent = m; 
+export function n6(m) {
+    document.getElementById('eRr').textContent = m;
 }
