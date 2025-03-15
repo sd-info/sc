@@ -1,2 +1,8 @@
-export const qA = ['m1', 's2', 'h3', 'm4', 'd5'];
-export const rB = { 'm1': 'r1', 's2': 'r2', 'h3': 'r3', 'm4': 'r4', 'd5': 'r5' };
+export const qX = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault', 'default'];
+export const rY = {
+    'maxresdefault': '1280x720',
+    'sddefault': '640x480',
+    'hqdefault': '480x360',
+    'mqdefault': '320x180',
+    'default': '120x90'
+};
