@@ -59,3 +59,6 @@ export async function x0() {
     h += `</div></div>`;
     p.innerHTML = h;
 }
+
+// Expose x0 globally
+window.x0 = x0;
