@@ -1,4 +1,4 @@
-<script>
+
 const qZ = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault', 'default'];
 const rS = { 
     'maxresdefault': '1280x720', 
@@ -7,8 +7,7 @@ const rS = {
     'mqdefault': '320x180', 
     'default': '120x90' 
 };
-</script>
-<script>
+
 async function j9p(s) {
     return new Promise((r) => {
         const i = new Image();
@@ -17,13 +16,10 @@ async function j9p(s) {
         i.src = s;
     });
 }
-</script>
-<script>
 document.getElementById('vIn').addEventListener('keypress', (e) => {
     if (e.key === 'Enter') x9k();
 });
-</script>
-<script>
+
 function k7m(t) { 
     return `https://img.youtube.com/vi/${t}/`; 
 }
@@ -94,8 +90,7 @@ async function x9k() {
     h += `</div></div>`;
     p.innerHTML = h;
 }
-</script>
-<script>
+
 function d4w(u, f) {
     let x = fetch(u);
     x.then(r => {
@@ -116,4 +111,4 @@ function d4w(u, f) {
 function z8q(m) { 
     document.getElementById('eRr').textContent = m; 
 }
-</script>
+
