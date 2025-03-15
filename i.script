@@ -1,0 +1,119 @@
+<script>
+const qZ = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault', 'default'];
+const rS = { 
+    'maxresdefault': '1280x720', 
+    'sddefault': '640x480', 
+    'hqdefault': '480x360', 
+    'mqdefault': '320x180', 
+    'default': '120x90' 
+};
+</script>
+<script>
+async function j9p(s) {
+    return new Promise((r) => {
+        const i = new Image();
+        i.onload = () => r(true);
+        i.onerror = () => r(false);
+        i.src = s;
+    });
+}
+</script>
+<script>
+document.getElementById('vIn').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') x9k();
+});
+</script>
+<script>
+function k7m(t) { 
+    return `https://img.youtube.com/vi/${t}/`; 
+}
+
+function m3x(u) {
+    const p = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/;
+    const m = u.match(p);
+    return m && m[1] ? m[1] : null;
+}
+</script>
+<script>
+async function x9k() {
+    const u = document.getElementById('vIn').value.trim();
+    const p = document.getElementById('pVw');
+    const e = document.getElementById('eRr');
+    p.innerHTML = '<p class="text-gray-500 text-center animate-pulse">Extracting YouTube Thumbnail...</p>';
+    e.textContent = '';
+    
+    const v = m3x(u);
+    if (!v) {
+        z8q('Invalid URL - Try again!');
+        p.innerHTML = '';
+        return;
+    }
+
+    const b = k7m(v);
+    let h = '', f = null;
+
+    // Find best available quality
+    for (let i = 0; i < qZ.length; i++) {
+        const q = qZ[i];
+        const t = `${b}${q}.jpg`;
+        if (await j9p(t)) {
+            f = { q, t, r: rS[q] };
+            break;
+        }
+    }
+
+    if (!f) {
+        z8q('No thumbnails found for this video');
+        p.innerHTML = '';
+        return;
+    }
+
+    // Build HTML output
+    h = `
+        <div class="neumorphic p-6 sm:p-8 rounded-2xl text-center">
+            <h3 class="text-xl sm:text-2xl font-semibold text-purple-600 mb-4">Best Quality: ${f.q} (${f.r})</h3>
+            <img src="${f.t}" alt="YouTube Thumbnail" class="w-full max-w-md sm:max-w-2xl mx-auto rounded-xl shadow-lg mb-6 transform hover:scale-105 transition-transform duration-300">
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+    `;
+
+    // Generate download buttons
+    for (let i = 0; i < qZ.length; i++) {
+        const q = qZ[i];
+        const t = `${b}${q}.jpg`;
+        const available = await j9p(t);
+        h += `
+            <button 
+                onclick="d4w('${t}', 'thumbnail_${v}_${q}.jpg')" 
+                class="bg-gradient-to-r ${available ? 'from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600' : 'from-gray-400 to-gray-500 cursor-not-allowed'} text-white px-3 sm:px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg text-xs sm:text-sm"
+                ${!available ? 'disabled' : ''}>
+                ${q} (${rS[q]})
+            </button>
+        `;
+    }
+
+    h += `</div></div>`;
+    p.innerHTML = h;
+}
+</script>
+<script>
+function d4w(u, f) {
+    let x = fetch(u);
+    x.then(r => {
+        if (!r.ok) throw new Error('X');
+        return r.blob();
+    }).then(b => {
+        const l = window.URL.createObjectURL(b);
+        const a = document.createElement('a');
+        a.href = l;
+        a.download = f;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(l);
+    }).catch(e => z8q(`Oops: ${e.message}`));
+}
+
+function z8q(m) { 
+    document.getElementById('eRr').textContent = m; 
+}
+</script>
